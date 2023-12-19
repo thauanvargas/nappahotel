@@ -1,0 +1,63 @@
+{
+  "name": "nappahotel",
+  "productName": "NappaHotel",
+  "debug": true,
+  "version": "1.0.0",
+  "clientId": 821791811172957,
+  "main": "app.js",
+  "description": "NappaHotel: Faça amigos, construa seu quarto, converse e seja famoso!",
+  "homepage": "https://nappahotel.com",
+  "author": {
+    "name": "Thauan Vargas",
+    "email": "thauan@outlook.pt"
+  },
+  "scripts": {
+    "start": "electron .",
+    "publish": "electron-builder --win -p always",
+    "build": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "11.1.0",
+    "electron-builder": "22.9.1"
+  },
+  "dependencies": {
+    "ansi-styles": "^6.2.1",
+    "electron-updater": "4.3.5"
+  },
+  "build": {
+    "appId": "nappahotel.app",
+    "extraResources": [
+      "./flash/**"
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "metusmeth",
+        "repo": "nappaapp"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "NappaHotel",
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "NappaHotel-${version}.${ext}"
+    }
+  }
+}
